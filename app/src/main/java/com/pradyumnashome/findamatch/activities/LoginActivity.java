@@ -1,4 +1,4 @@
-package com.pradyumnashome.findamatch;
+package com.pradyumnashome.findamatch.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -25,6 +25,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.pradyumnashome.findamatch.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
