@@ -2,6 +2,7 @@ package com.pradyumnashome.findamatch;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
@@ -62,7 +63,20 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void openPlaces(FirebaseUser firebaseUser) {
-
+        Intent placeFeedIntent = new Intent(this, PlacesFeedActivity.class);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(USERNAME, firebaseUser.getDisplayName());
+        if (firebaseUser.getPhotoUrl() != null) {
+            editor.putString(USER_PHOTO_URI, firebaseUser.getPhotoUrl()
+                    .toString());
+        } else {
+            editor.putString(USER_PHOTO_URI, String.valueOf(
+                    Uri.parse(
+                            DEFAULT_PROFILE_PICTURE_URI)));
+        }
+        editor.commit();
+        startActivity(placeFeedIntent);
     }
 
     /**
